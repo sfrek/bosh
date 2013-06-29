@@ -117,6 +117,8 @@ require "director/jobs/ssh"
 require "director/models/helpers/model_helper"
 
 require 'director/db_backup'
+require 'director/blobstores'
+require 'director/app'
 
 module Bosh::Director
   autoload :Models, "director/models"
