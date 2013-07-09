@@ -102,6 +102,14 @@ PATH
       yajl-ruby (~> 1.1.0)
 
 PATH
+  remote: bosh_kvm_cpi
+  specs:
+    bosh_kvm_cpi (1.5.0.pre.3)
+      bosh_common (~> 1.5.0.pre.3)
+      fog (~> 1.12.1)
+      ruby-libvirt (~> 0.4.0)
+
+PATH
   remote: bosh_openstack_cpi
   specs:
     bosh_openstack_cpi (1.5.0.pre.3)
@@ -355,6 +363,7 @@ GEM
       log4r (>= 1.1.9)
       ruby-hmac (>= 0.4.0)
     ruby-hmac (0.4.0)
+    ruby-libvirt (0.4.0)
     ruby_gntp (0.3.4)
     ruby_vcloud_sdk (0.4.8)
       builder
@@ -413,6 +422,7 @@ DEPENDENCIES
   bosh_common!
   bosh_cpi!
   bosh_encryption!
+  bosh_kvm_cpi!
   bosh_openstack_cpi!
   bosh_registry!
   bosh_vsphere_cpi!
