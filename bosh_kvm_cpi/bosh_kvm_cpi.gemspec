@@ -3,14 +3,14 @@
 version = File.read(File.expand_path('../../BOSH_VERSION', __FILE__)).strip
 
 Gem::Specification.new do |s|
-  s.name         = "bosh_cpi"
+  s.name         = "bosh_kvm_cpi"
   s.version      = version
   s.platform     = Gem::Platform::RUBY
   s.summary      = "BOSH CPI"
   s.description  = "BOSH CPI\n#{`git rev-parse HEAD`[0, 6]}"
   s.author       = "VMware"
-  s.homepage = 'https://github.com/cloudfoundry/bosh'
-  s.license = 'Apache 2.0'
+  s.homepage     = 'https://github.com/cloudfoundry/bosh'
+  s.license      = 'Apache 2.0'
   s.email        = "support@cloudfoundry.com"
   s.required_ruby_version = Gem::Requirement.new(">= 1.9.3")
 
@@ -18,4 +18,6 @@ Gem::Specification.new do |s|
   s.require_path = "lib"
 
   s.add_dependency "bosh_common", "~>#{version}"
+	s.add_dependency "fog", "~> 1.12.1"
+	s.add_dependency "ruby-libvirt", "~> 0.4.0"
 end
