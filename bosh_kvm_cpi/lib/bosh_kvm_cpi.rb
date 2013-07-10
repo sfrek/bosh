@@ -24,6 +24,10 @@ module Bosh
     # Cloud initialization
     #
     # @param [Hash] options cloud options
+		# KVM Connection need:
+		# 	libvirt uri
+		# 	Pool name where stemcell is.
+		# 	Network name which cpi will connect the stemcell network interfaces
     def initialize(options)
     end
 
