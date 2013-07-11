@@ -13,7 +13,7 @@ class KvmQuick
 	
 		kvm_params = {
 			:provider => "Libvirt",
-			:libvirt_uri => "qemu:///system"
+			:libvirt_uri => "#{@options["kvm"]["libvirt_uri"]}"
 		}
 
 		@agent_properties = @options["agent"] || {}
@@ -47,11 +47,6 @@ class KvmQuick
 
 		puts "Nodes list".colorize( :light_white )
 		puts "@kvm.nodes.all #{@kvm.nodes.all}".colorize( :red ) 
-
-		puts "#{@pool}".colorize( :blue )
-		puts @kvm.list_volumes(:pool_name => "#{@pool}")
-
-
 		# request :list_domains
 		# request :create_domain
 		# request :define_domain
@@ -69,7 +64,6 @@ class KvmQuick
 		# request :destroy_interface
 		# request :get_node_info
 		# request :update_display
-
 
 		puts "@kvm.list_domains".colorize( :light_white )
 		puts @kvm.list_domains
@@ -101,13 +95,51 @@ class KvmQuick
 		puts @kvm.get_node_info
 		# puts @kvm.update_display
 
+		puts "\nGeneral Options".colorize( :light_blue )
+		puts @options
+		puts @agent_properties
+		puts @pool
+		puts @network
+		puts @options["kvm"]
+		puts @options["kvm"]["libvirt_uri"]
+
+		puts "#{@pool}".colorize( :blue )
+		puts @kvm.list_volumes(:pool_name => "#{@pool}")
+
+		puts "#{@network}".colorize( :blue )
+		puts @kvm.list_networks(:network_name => "#{@network}")
+
 	end
+
+	def create_stemcell(image_path, cloud_properties)
+		# Not implement, or:
+		# - Download stemcell from image_path
+		# - Insert stemcell image into the pool passed through cloud_properties ( ovf? )
+		# - return uuid 
+	end
+
+	def delete_stemcell(stemcell_id)
+		# delete 
+	end
+
+
 
 	def one_error(error_string)
 		puts "#{error_string}".colorize( :light_red )
 	end
-	
+
+
+	# Create Pool
+	# @param [Hash] Pool properties, ...
+	# TODO: Only one template to Pool 'type="dir"'
+	def create_pool(properties)
+	end
+
 end
 
-k = KvmQuick.new({})
+k = KvmQuick.new({"agent" => "agente", 
+								 "pool" => "default", 
+ 									"network" => "vagrant", 
+								 "kvm" => {"libvirt_uri" => "qemu:///system"}})
+
 k.info
