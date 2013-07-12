@@ -66,3 +66,5 @@ Checkfile
 *.deb
 .vagrant
 .rvmrc
+**/*.gem
+**/*/*.gem
