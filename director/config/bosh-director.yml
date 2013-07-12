@@ -19,7 +19,7 @@ blobstore:
     user: admin
     password: admin
 cloud:
-  plugin: vsphere
+  plugin: kvm
   properties:
     agent:
       ntp:
