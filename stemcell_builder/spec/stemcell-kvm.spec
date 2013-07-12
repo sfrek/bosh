@@ -24,28 +24,38 @@ stage system_grub
 stage system_kernel
 
 # Misc
+# There's any openstack's stages that i don't need to change yet.
+# Delete network udev persistent rule
 stage system_openstack_network
+# Disable hwclock
 stage system_openstack_clock
+# Add PCI Hotplug Support
 stage system_openstack_modules
 stage system_parameters
-
+ 
 # Finalisation
 stage bosh_clean
 stage bosh_harden
 stage bosh_harden_ssh
 stage bosh_tripwire
 stage bosh_dpkg_list
-
-# Image/bootloader
+ 
+# # Image/bootloader
 stage image_create
 stage image_install_grub
-if [ ${stemcell_hypervisor:-kvm} == "xen" ]
-then
-  stage image_openstack_update_grub
-else
-  stage image_openstack_qcow2
-fi
-stage image_openstack_prepare_stemcell
+# We only use kvm
+stage image_openstack_qcow2
+#
+# Now we need to create ovf-kvm 'pod' to storage it on any place.
+#
 
-# Final stemcell
-stage stemcell_openstack
+# if [ ${stemcell_hypervisor:-kvm} == "xen" ]
+# then
+#   stage image_openstack_update_grub
+# else
+#   stage image_openstack_qcow2
+# fi
+# stage image_openstack_prepare_stemcell
+# 
+# # Final stemcell
+# stage stemcell_openstack
