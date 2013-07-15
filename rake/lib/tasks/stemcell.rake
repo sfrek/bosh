@@ -158,6 +158,9 @@ namespace :stemcell do
       when "openstack"
         # Increase the disk size to 10Gb to deal with flavors that doesn't have ephemeral disk
         options[:image_create_disk_size] = 10240 unless args[:disk_size]
+      when "kvm"
+        # Increase the disk size to 10Gb to deal with flavors that doesn't have ephemeral disk
+        options[:image_create_disk_size] = 10240 unless args[:disk_size]
     end
 
     options
@@ -185,6 +188,8 @@ namespace :stemcell do
       when "aws"
         hypervisor = "xen"
       when "openstack"
+        hypervisor = "kvm"
+      when "kvm"
         hypervisor = "kvm"
       else
         raise "Unknown infrastructure: #{infrastructure}"

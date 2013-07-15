@@ -47,6 +47,8 @@ stage image_install_grub
 stage image_openstack_qcow2
 #
 # Now we need to create ovf-kvm 'pod' to storage it on any place.
+# - xml file
+# - qcow2 file
 #
 
 # if [ ${stemcell_hypervisor:-kvm} == "xen" ]
