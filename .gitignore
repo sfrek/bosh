@@ -69,3 +69,6 @@ Checkfile
 **.gem
 **/*.gem
 **/*/*.gem
+/vendor/*
+/vendor/**/*.gem
+Gemfile.lock
